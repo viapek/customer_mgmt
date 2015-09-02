@@ -1,0 +1,14 @@
+<%= link_to('Home', "/") %> 
+<% unless controller_name == 'customers' && action_name == 'index' %>
+	<%= link_to('<< Customers', :controller => 'customers', :action => 'index') %>
+<% end %>
+<% if !['customers'].include?(controller_name) && !@viewForAllCustomers %>
+	<%= link_to('<< ' + @customer.name.capitalize, :controller => 'customers', :action => 'show', :id => @customer.id) %>
+<% end %>
+<% unless ['index', 'show', 'new', 'delete'].include?(action_name) %>
+	<%= link_to('<< ' + @customer.name.capitalize, :controller => 'customers', :action => 'show', :id => @customer.id) %>
+<% end %>
+<% if !['customers'].include?(controller_name) && !@viewForAllCustomers && action_name == 'show' %>
+	<%= link_to('<<' + controller_name.capitalize, :action => 'index', :customer_id => @customer.id)%>
+<% end %>
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>viaEnglish - Customer Management | <%= @page_title || "Admin" %></title>
+  <%= stylesheet_link_tag('application', :media => 'all') %>
+  <%= javascript_include_tag('application') %>
+</head>
+<body>
+<div id="header"><h1>viaEnglish Customer Management</h1></div>
+<nav class="breadcrumbsNavClass">
+<%= render(:partial => 'application/breadcrumbs')%>
+</nav>
+<div id="main">
+	<% if !flash.blank? %>
+	<div class="notice">
+		<%= raw flash[:notice] %>
+	</div>
+	<% end %>
+	<div id="content">
+		<%= yield %>
+	</div>
+</div>
+
+<footer>
+	&copy;viaEnglish / Jeremy McKee Watt&nbsp;
+</footer>
+
+</body>
+</html>

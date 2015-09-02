@@ -1,0 +1,12 @@
+<% @page_title = "Payment Delete" %>
+<header>
+	<%= @customer.name %> - <%= @page_title %>
+	<span id="titleEditLinkSpan">
+		<%= link_to("Confirm Delete", {:action => 'destroy', :customer_id => @payment.customer_id, :id => @payment.id}, :class => 'actionLinkClass') %>
+	</span>
+</header>
+<div>
+	<p id="predeletewarning">Are you sure that you wish to delete <b><em><%= @customer.name %>'s'</em></b> 
+		payment of &#8361;<%= @payment.amount %> from 
+		<%= @payment.date.strftime('%d %B, \'%y') %>?</p>
+</div>

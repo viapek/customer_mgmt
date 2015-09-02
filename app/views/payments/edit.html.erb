@@ -1,0 +1,12 @@
+<% @page_title = "Payment Edit" %>
+<%= form_for(:payment, :url => {:action => 'update', :id => @payment.id}) do |f| %>
+<header>
+	<%= @payment.customer.name %> - <%= @page_title %>
+	<span id="titleEditLinkSpan">
+		<%= submit_tag("Update payment", :class => 'formButtonClass')%>
+	</span>	
+</header>
+
+<%= render(:partial => 'form', :locals => {:f => f})%>
+
+<% end %>

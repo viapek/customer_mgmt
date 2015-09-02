@@ -1,0 +1,11 @@
+<% @page_title = "Customer Delete" %>
+<header><%= @customer.name %> - <%= @page_title %></header>
+<div>
+	<p id="predeletewarning">Are you sure that you wish to delete <b><em><%= @customer.name %></em></b> and all
+	associated history?</p>
+</div>
+
+<div class="formButtonDivClass">	
+	<%= link_to("Confirm Delete", {:action => 'destroy', :id => @customer.id}, :class => 'actionLinkClass') %>
+</div>
+

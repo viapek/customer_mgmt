@@ -1,0 +1,25 @@
+<%= error_messages_for(@payment) %>
+<table summary="Payment form fields" class="formTableClass">
+<% if @viewForAllCustomers %>
+	<tr>
+		<th>Customer</th>
+		<td><%= f.select(:customer_id, Customer.all.map {|c| [c.name, c.id]})%></td>
+	</tr>
+<% else %>
+	<%= f.hidden_field(:customer_id, :value => @customer.id) %>
+<% end %>
+	<tr>
+		<th>Date</th>
+		<td>
+			<%= f.date_select(:date) %>	
+		</td>
+	</tr>
+	<tr>
+		<th>Amount (&#8361;)</th>
+		<td><%= f.text_field(:amount) %></td>
+	</tr>
+	<tr>
+		<th>Classes Paid For</th>
+		<td><%= f.select(:classes_paid_for, 1..30, :default => 4) %></td>
+	</tr>
+</table>

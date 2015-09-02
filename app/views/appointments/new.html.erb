@@ -1,0 +1,22 @@
+<% @page_title = "Appointment Create" %>
+<%= form_for(:appointment, :url => {:action => 'create'}) do |f| %>
+
+<header>
+<% if @viewForAllCustomers %>
+
+	New - <%= @page_title %>
+
+<% else %>
+
+	<%= @customer.name %> - <%= @page_title %>
+
+<% end %>
+	
+	<span id="titleEditLinkSpan">
+		<%= submit_tag("Create appointment", :class => 'formButtonClass')%>
+	</span>
+
+</header>
+<%= render(:partial => 'form', :locals => {:f => f})%>
+
+<% end %>

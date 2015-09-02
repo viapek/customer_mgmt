@@ -1,0 +1,9 @@
+<% @page_title = "Customer Edit" %>
+<header><%= @customer.name %> - <%= @page_title %></header>
+<%= form_for(:customer, :url => {:action => 'update', :id => @customer.id}) do |f| %>
+
+<%= render(:partial => 'form', :locals => {:f => f})%>
+
+<div class="formButtonDivClass"><%= submit_tag("Update customer", :class => 'formButtonClass')%></div>
+
+<% end %>

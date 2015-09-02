@@ -1,0 +1,16 @@
+<% @page_title = "All Customers" %>
+
+<header><%= @page_title %>
+	<span id="titleEditLinkSpan">
+		<%= link_to("New", {:action => 'new'}, :class => 'actionLinkClass') %>
+	</span>
+</header>
+
+<table class="indexTableClass">
+<% @customers.each do |c| %>
+	<tr colspan="2" class="<%= cycle('odd', 'even') %>">
+		<th><%= link_to(c.name, :action => 'show', :id => c.id) %></th>
+	</tr>
+<% end %>
+</table>
+<span class="recordCount"><%= pluralize(@customers.size, 'customer') %> found</span>

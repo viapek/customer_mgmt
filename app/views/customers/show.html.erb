@@ -1,0 +1,15 @@
+<% @page_title = @customer.name %>
+<header>
+	<%= @page_title %>&nbsp;&nbsp;
+	<span id="titleEditLinkSpan">
+		<%= link_to("Edit", {:action => 'edit', :id => @customer.id}, :class => 'actionLinkClass') %>
+		<%= link_to("Delete", {:action => 'delete', :id => @customer.id}, :class => 'actionLinkClass') %>
+	</span>
+</header>
+<%= render(:partial => 'show') %>
+
+<div class="formButtonDivClass">
+<%= link_to("Payments", {:controller => 'payments', :action => 'index', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
+<%= link_to("Appointments", {:controller => 'appointments', :action => 'index', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
+<%= link_to("Class History", {:controller => 'appointment_logs', :action => 'index', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
+</div>

@@ -1,0 +1,12 @@
+<% @page_title = "Appointment Delete" %>
+<header>
+	<%= @customer.name %> - <%= @page_title %>
+	<span id="titleEditLinkSpan">	
+		<%= link_to("Confirm Delete", {:action => 'destroy', :customer_id => @appointment.customer_id, :id => @appointment.id}, :class => 'actionLinkClass') %>
+	</span>
+</header>
+<div>
+	<p id="predeletewarning">Are you sure that you wish to delete <b><em><%= @customer.name %>'s'</em></b> 
+		<%= Date::DAYNAMES[@appointment.day]%> appointment from 
+		<%= @appointment.start_time.strftime('%H:%M') %> - <%= @appointment.finish_time.strftime('%H:%M') %>?</p>
+</div>

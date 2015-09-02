@@ -1,0 +1,9 @@
+<% @page_title = "Payment View" %>
+<header>
+	<%= @customer.name %> - <%= @page_title %>
+	<span id="titleEditLinkSpan">
+			<%= link_to("Edit", {:action => 'edit', :customer_id => @payment.customer_id, :id => @payment.id}, :class => 'actionLinkClass') %>
+			<%= link_to("Delete", {:action => 'delete', :customer_id => @payment.customer_id, :id => @payment.id}, :class => 'actionLinkClass') %>
+	</span>
+</header>
+<%= render(:partial => 'show') %>

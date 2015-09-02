@@ -1,0 +1,9 @@
+<% @page_title = "Appointment View" %>
+<header>
+	<%= @customer.name %> - <%= @page_title %>
+	<span id="titleEditLinkSpan">
+			<%= link_to("Edit", {:action => 'edit', :customer_id => @appointment.customer_id, :id => @appointment.id}, :class => 'actionLinkClass') %>
+			<%= link_to("Delete", {:action => 'delete', :customer_id => @appointment.customer_id, :id => @appointment.id}, :class => 'actionLinkClass') %>
+	</span>
+</header>
+<%= render(:partial => 'show') %>

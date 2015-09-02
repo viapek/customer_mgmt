@@ -1,0 +1,19 @@
+<%= error_messages_for(@customer) %>
+<table summary="Customer form fields" class="formTableClass">
+	<tr>
+		<th>Name</th>
+		<td><%= f.text_field(:name) %></td>
+	</tr>
+	<tr>
+		<th>Email</th>
+		<td><%= f.text_field(:email) %></td>
+	</tr>
+	<tr>
+		<th>Phone</th>
+		<td><%= f.text_field(:phone) %></td>
+	</tr>
+	<tr>
+		<th>Current</th>
+		<td><%= f.check_box(:current) %></td>
+	</tr>
+</table>

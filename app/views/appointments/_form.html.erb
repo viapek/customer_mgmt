@@ -1,0 +1,29 @@
+<%= error_messages_for(@appointment) %>
+<table summary="Appointment form fields" class="formTableClass">
+<% if @viewForAllCustomers %>
+	<tr>
+		<th>Customer</th>
+		<td><%= f.select(:customer_id, Customer.all.map {|c| [c.name, c.id]})%></td>
+	</tr>
+<% else %>
+	<%= f.hidden_field(:customer_id, :value => @customer.id) %>
+<% end %>
+	<tr>
+		<th>Day</th>
+		<td>
+			<%= f.select(:day, Date::DAYNAMES.each_with_index.to_a) %>	
+		</td>
+	</tr>
+	<tr>
+		<th>Start</th>
+		<td><%= f.time_select(:start_time, {:ignore_date => true, :minute_step => 15 }, :onchange => 'updateFinishTime()') %></td>
+	</tr>
+	<tr>
+		<th>Finish</th>
+		<td><%= f.time_select(:finish_time, {:ignore_date => true, :minute_step => 15 }) %></td>
+	</tr>
+	<tr>
+		<th>Location</th>
+		<td><%= f.text_field(:location) %></td>
+	</tr>
+</table>

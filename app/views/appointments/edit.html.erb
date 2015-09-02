@@ -1,0 +1,15 @@
+<% @page_title = "Appointment Edit" %>
+<%= form_for(:appointment, :url => {:action => 'update', :id => @appointment.id}) do |f| %>
+
+<header>
+	<%= @customer.name %> - <%= @page_title %>
+	<span id="titleEditLinkSpan">
+	<%= submit_tag("Update appointment", :class => 'formButtonClass')%>
+	</span>
+</header>
+
+
+<%= render(:partial => 'form', :locals => {:f => f})%>
+
+
+<% end %>

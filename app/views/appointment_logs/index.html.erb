@@ -1,0 +1,41 @@
+<% @page_title = "Appointment Logs" %>
+<header>
+<% if @viewForAllCustomers %>
+
+All Customers - <%= @page_title %>
+	<span id="titleEditLinkSpan">
+		<%= link_to("New", {:action => 'new', :customer_id => 'true'}, :class => 'actionLinkClass') %>
+	</span>
+
+
+<% else %>
+
+<%= @customer.name %> - <%= @page_title %>
+	<span id="titleEditLinkSpan">
+		<%= link_to("New", {:action => 'new', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
+	</span>		
+<% end %>
+</header>
+
+<%= !@viewForAllCustomers ? link_to("View all customer appointment logs", :action => 'index') : '' %>
+<table class="indexTableClass">
+	<tr class="indexTableHeaderRowClass">
+	<% if @viewForAllCustomers %>
+		<th>Customer</th>
+	<% end %>
+		<th>Date</th>
+		<th>Chargeable</th>
+		<th>Notes</th>
+	</tr>
+<% @appointment_logs.sorted.each do |a| %>
+	<tr class="<%= cycle('odd', 'even') %>">
+	<% if @viewForAllCustomers %>
+		<td><%= a.customer.name %></td>
+	<% end %>
+		<td><%= a.date.strftime('%d %B, \'%y') %></td>
+		<td><%= a.chargeable ? 'Yes' : 'No' %></td>
+		<td><%= link_to(truncate(a.notes, :limit => 25, :omitted => '...'), {:action => 'show', :customer_id => a.customer_id, :id => a.id}) %></td>
+	</tr>
+<% end %>
+</table>
+<span class="recordCount"><%= pluralize(@appointment_logs.size, 'appointment log') %> found</span>

@@ -1,0 +1,25 @@
+<%= error_messages_for(@appointment_log) %>
+<table summary="Appointment Log form fields" class="formTableClass">
+<% if @viewForAllCustomers %>
+	<tr>
+		<th>Customer</th>
+		<td><%= f.select(:customer_id, Customer.all.map {|c| [c.name, c.id]})%></td>
+	</tr>
+<% else %>
+	<%= f.hidden_field(:customer_id, :value => @customer.id) %>
+<% end %>
+	<tr>
+		<th>Date</th>
+		<td>
+			<%= f.date_select(:date) %>	
+		</td>
+	</tr>
+	<tr>
+		<th>Chargeable</th>
+		<td><%= f.check_box(:chargeable) %></td>
+	</tr>
+	<tr>
+		<th>Notes</th>
+		<td><%= f.text_area(:notes, :size => '40x15') %></td>
+	</tr>
+</table>

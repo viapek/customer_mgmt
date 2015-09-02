@@ -1,0 +1,13 @@
+<% @page_title = "Appointment Log Delete" %>
+<header>
+	<%= @customer.name %> - <%= @page_title %>
+	<span id="titleEditLinkSpan">	
+		<%= link_to("Confirm Delete", {:action => 'destroy', :customer_id => @appointment_log.customer_id, :id => @appointment_log.id}, :class => 'actionLinkClass') %>
+	</span>
+</header>
+
+<div>
+	<p id="predeletewarning">Are you sure that you wish to delete <b><em><%= @customer.name %>'s'</em></b> 
+		appointment log from <%= @appointment_log.date.strftime('%d %B, \'%y') %>?</p>
+</div>
+
