@@ -45,7 +45,7 @@
 		<th>Last payment</th>
 		<td>
 		<% if !@customer.payments.blank? %>
-		<%= link_to(@customer.payments.first.date.strftime('%d %b, \'%y'), {:controller => 'payments', :action => 'show', :customer_id => @customer.id, :id => @customer.payments.first.id}, :class => 'infoLinkClass') %>
+		<%= link_to(@customer.payments.last.date.strftime('%d %b, \'%y'), {:controller => 'payments', :action => 'show', :customer_id => @customer.id, :id => @customer.payments.first.id}, :class => 'infoLinkClass') %>
 		<% else %>
 		<%= link_to("New", {:controller => 'payments', :action => 'new', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
 		<% end %>
