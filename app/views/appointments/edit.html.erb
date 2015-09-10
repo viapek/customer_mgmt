@@ -1,15 +1,16 @@
 <% @page_title = "Appointment Edit" %>
-<%= form_for(:appointment, :url => {:action => 'update', :id => @appointment.id}) do |f| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+      <%= @page_title %><%= !@viewForAllCustomers ? raw(' - ' + link_to(@customer.name, :controller => 'customers', :action => 'show', :id => @customer.id)) : '' %>
+  </div>
+  <div class="panel-body">
+    <%= form_for(:appointment, :url => {:action => 'update', :id => @appointment.id}) do |f| %>
+    
+    <%= render(:partial => 'form', :locals => {:f => f})%>
 
-<header>
-	<%= @customer.name %> - <%= @page_title %>
-	<span id="titleEditLinkSpan">
-	<%= submit_tag("Update appointment", :class => 'formButtonClass')%>
-	</span>
-</header>
+    <%= submit_tag("Update appointment", :class => 'form-control btn btn-primary btn-md')%>
 
-
-<%= render(:partial => 'form', :locals => {:f => f})%>
-
-
-<% end %>
+    <% end %>
+  </div>
+</div>

@@ -11,18 +11,26 @@
 <%= render(:partial => 'application/breadcrumbs')%>
 </nav>
 <div id="main">
-	<% if !flash.blank? %>
-	<div class="notice">
-		<%= raw flash[:notice] %>
-	</div>
-	<% end %>
-	<div id="content">
-		<%= yield %>
-	</div>
+  <% if !flash.blank? %>
+  <div class="notice">
+    <%= raw flash[:notice] %>
+  </div>
+  <% end %>
+  <div id="content">
+    <%= yield %>
+  </div>
 </div>
 
+
+      <!-- modal -->
+      <section id="modal" class="modal fade">
+        <div class="modal-body">
+          <img id="modalimage" src="" alt="Modal Photo">
+        </div>
+      </section><!-- end modal -->
+
 <footer>
-	&copy;viaCode&nbsp;
+  &copy;viaCode&nbsp;
 </footer>
 
 </body>

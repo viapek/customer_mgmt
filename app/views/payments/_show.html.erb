@@ -1,10 +1,14 @@
-<table class="viewTableClass">
-	<tr>
-		<th>Date</th>
-		<td><%= @payment.date.strftime('%d %B, \'%y') %></td>
-	</tr>
-	<tr>
-		<th>Amount (&#8361;)</th>
-		<td><%= @payment.amount %></td>
-	</tr>
+<table class="table">
+  <tr>
+    <th>&nbsp;Payment Date</th>
+    <td><%= @payment.date.strftime('%d %B, \'%y') %></td>
+  </tr>
+  <tr>
+    <th>&nbsp;Amount (&#8361;)</th>
+    <td><%= @payment.amount %></td>
+  </tr>
+  <tr>
+    <th>&nbsp;Classes Paid For</th>
+    <td><%= @payment.classes_paid_for %></td>
+  </tr>
 </table>

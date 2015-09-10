@@ -16,5 +16,10 @@ class Customer < ActiveRecord::Base
     order('customers.name ASC')
   }
 
+   def initials
+     s = ''
+     name.scan(/\w+/).each {|index| s += index[0]}
+     return s
+   end
   
 end

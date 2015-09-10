@@ -1,12 +1,20 @@
 <% @page_title = "Payment Edit" %>
-<%= form_for(:payment, :url => {:action => 'update', :id => @payment.id}) do |f| %>
-<header>
-	<%= @payment.customer.name %> - <%= @page_title %>
-	<span id="titleEditLinkSpan">
-		<%= submit_tag("Update payment", :class => 'formButtonClass')%>
-	</span>	
-</header>
 
-<%= render(:partial => 'form', :locals => {:f => f})%>
+<div class="panel panel-default">
+  <div class="panel-heading">
 
-<% end %>
+      <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+      <%= @page_title %><%= !@viewForAllCustomers ? raw(' - ' + link_to(@customer.name, :controller => 'customers', :action => 'show', :id => @customer.id)) : '' %>
+
+  </div>
+  <div class="panel-body">
+    <%= form_for(:payment, :url => {:action => 'update', :id => @payment.id}) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f})%>
+
+
+    <%= submit_tag("Update Payment", :class => 'form-control btn btn-primary btn-md')%>
+
+    <% end %>
+  </div>
+</div>

@@ -1,15 +1,22 @@
 <% @page_title = @customer.name %>
-<header>
-	<%= @page_title %>&nbsp;&nbsp;
-	<span id="titleEditLinkSpan">
-		<%= link_to("Edit", {:action => 'edit', :id => @customer.id}, :class => 'actionLinkClass') %>
-		<%= link_to("Delete", {:action => 'delete', :id => @customer.id}, :class => 'actionLinkClass') %>
-	</span>
-</header>
-<%= render(:partial => 'show') %>
 
-<div class="formButtonDivClass">
-<%= link_to("Payments", {:controller => 'payments', :action => 'index', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
-<%= link_to("Appointments", {:controller => 'appointments', :action => 'index', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
-<%= link_to("Class History", {:controller => 'appointment_logs', :action => 'index', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      <%= @page_title %>
+      <span class="btn-group pull-right">
+        <%= link_to("Edit", {:action => 'edit', :id => @customer.id}, :class => 'btn btn-warning btn-xs') %>
+        <%= link_to("Delete", {:action => 'delete', :id => @customer.id}, :class => 'btn btn-warning btn-xs') %>
+      </span>
+
+  </div>
+
+  <div class="btn-group btn-group-justified" role="group" aria-label="..."">
+    <%= link_to("Payments", {:controller => 'payments', :action => 'index', :customer_id => @customer.id}, :class => 'btn btn-info btn-xs') %>
+    <%= link_to("Appointments", {:controller => 'appointments', :action => 'index', :customer_id => @customer.id}, :class => 'btn btn-info btn-xs') %>
+    <%= link_to("Class History", {:controller => 'appointment_logs', :action => 'index', :customer_id => @customer.id}, :class => 'btn btn-info btn-xs') %>
+  </div>
+  <%= render(:partial => 'show') %>
+
 </div>

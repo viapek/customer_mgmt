@@ -1,9 +1,16 @@
-<% @page_title = "Appointment View" %>
-<header>
-	<%= @customer.name %> - <%= @page_title %>
-	<span id="titleEditLinkSpan">
-			<%= link_to("Edit", {:action => 'edit', :customer_id => @appointment.customer_id, :id => @appointment.id}, :class => 'actionLinkClass') %>
-			<%= link_to("Delete", {:action => 'delete', :customer_id => @appointment.customer_id, :id => @appointment.id}, :class => 'actionLinkClass') %>
-	</span>
-</header>
-<%= render(:partial => 'show') %>
+<% @page_title = "Appointment" %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    
+      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+      <%= @page_title %><%= !@viewForAllCustomers ? raw(' - ' + link_to(@customer.name, :controller => 'customers', :action => 'show', :id => @customer.id)) : '' %>
+
+      <span class="btn-group pull-right">
+        <%= link_to("Edit", {:action => 'edit', :customer_id => @appointment.customer_id, :id => @appointment.id}, :class => 'btn btn-xs btn-warning') %>
+        <%= link_to("Delete", {:action => 'delete', :customer_id => @appointment.customer_id, :id => @appointment.id}, :class => 'btn btn-xs btn-warning') %>
+      </span>
+    
+  </div>
+
+    <%= render(:partial => 'show') %>
+</div>

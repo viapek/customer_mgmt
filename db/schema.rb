@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829024830) do
+ActiveRecord::Schema.define(version: 20150903182151) do
+
+  create_table "admin_users", force: :cascade do |t|
+    t.integer  "customer_id",     limit: 4
+    t.string   "first_name",      limit: 25
+    t.string   "last_name",       limit: 50
+    t.string   "email",           limit: 100, null: false
+    t.string   "password_digest", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_users", ["customer_id"], name: "index_admin_users_on_customer_id", using: :btree
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", using: :btree
 
   create_table "appointment_logs", force: :cascade do |t|
     t.integer  "customer_id", limit: 4

@@ -1,25 +1,31 @@
 <%= error_messages_for(@appointment_log) %>
-<table summary="Appointment Log form fields" class="formTableClass">
 <% if @viewForAllCustomers %>
-	<tr>
-		<th>Customer</th>
-		<td><%= f.select(:customer_id, Customer.all.map {|c| [c.name, c.id]})%></td>
-	</tr>
+<div class="row form-group">
+  <label for="customer_id" class="col-xs-3 control-label">Customer</label>
+  <div class="col-xs-9">
+  	<%= f.select(:customer_id, Customer.all.map {|c| [c.name, c.id]}, :class => "form-control")%></td>
+  </div>
+</div>
 <% else %>
-	<%= f.hidden_field(:customer_id, :value => @customer.id) %>
+  <%= f.hidden_field(:customer_id, :value => @customer.id) %>
 <% end %>
-	<tr>
-		<th>Date</th>
-		<td>
-			<%= f.date_select(:date) %>	
-		</td>
-	</tr>
-	<tr>
-		<th>Chargeable</th>
-		<td><%= f.check_box(:chargeable) %></td>
-	</tr>
-	<tr>
-		<th>Notes</th>
-		<td><%= f.text_area(:notes, :size => '40x15') %></td>
-	</tr>
-</table>
+<div class="row form-group">
+  <label for="date" class="col-xs-3 control-label">Date</label>
+  <div class="col-xs-9">
+  	<%= f.date_select(:date, {:order => [:day, :month, :year], :use_short_month => true} ) %>	
+  </div>
+</div>
+
+<div class="row form-group">
+  <label for="chargeable" class="col-xs-3 control-label">Chargeable</label>
+  <div class="col-xs-9">
+    <%= f.check_box(:chargeable) %>
+  </div>
+</div>
+
+<div class="row form-group">
+  <label for="notes" class="col-xs-3 control-label">Notes</label>
+  <div class="col-xs-9">
+  	<%= f.text_area(:notes, :rows => 5, :style => 'overflow-y: scroll; resize: none;', :class=> "form-control") %>
+  </div>
+</div>

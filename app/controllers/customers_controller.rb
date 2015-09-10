@@ -1,5 +1,8 @@
 class CustomersController < ApplicationController
+  layout 'admin'
 
+  before_action :confirm_logged_in
+  
   def index
     @customers = Customer.sorted
   end
@@ -15,6 +18,7 @@ class CustomersController < ApplicationController
   def create
     # Instantiate the object
     @customer = Customer.new(customer_params)
+
     # Save the object
     if @customer.save
     # If success redirect to show

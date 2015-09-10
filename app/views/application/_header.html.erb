@@ -1,0 +1,28 @@
+  <div class="header row">
+    <div class="col col-xs-12">
+      <header class="clearfix">        
+      <nav class="navbar navbar-default navbar-inverse">
+        <section class="container-fluid">
+          <div class='navbar-header'>
+          <button class="navbar-toggle collapsed" aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/admin" class="navbar-brand">viaEnglish</a>
+          </div><!-- navbar header -->
+          <div id="navbar" class="navbar-collapse collapse" aria-extended="false" style="height: 1px;">
+            <ul class="nav navbar-nav">
+              <li><%= link_to('Customers', {controller: 'customers'}, id: 'bob')%></li>
+              <li><%= link_to('Appointments', controller: 'appointments' )%></li>
+              <li><%= link_to('Payments', controller: 'payments' )%></li>
+              <li><%= link_to('Class Logs', controller: 'appointment_logs' )%></li>
+              <li><%= link_to("Logout", :controller => 'access', :action => 'logout' )%></li>            </ul><!-- navigation -->
+          </div><!-- navbar -->
+        </section><!-- container-fluid -->
+      </nav><!-- nav bar -->
+
+      </header><!-- header -->
+      </div><!-- column -->
+  </div><!-- content -->

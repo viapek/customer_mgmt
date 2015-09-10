@@ -1,40 +1,43 @@
 <% @page_title = "Appointments" %>
-<header>
-<% if @viewForAllCustomers %>
+<div class="panel panel-default">
+  <div class="panel-heading">
 
-All Customers - <%= @page_title %>
-	<span id="titleEditLinkSpan">
-		<%= link_to("New", {:action => 'new', :customer_id => 'true'}, :class => 'actionLinkClass') %>
-	</span>
+      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+      <%= @page_title %><%= !@viewForAllCustomers ? ' - ' + @customer.name : '' %>
+      <span class="btn-group pull-right">
+        <% if @viewForAllCustomers %>
+          <%= link_to("New", {:action => 'new', :customer_id => 'true'}, :class => 'btn btn-warning btn-xs') %>
+        <% else %>
+          <%= link_to("New", {:action => 'new', :customer_id => @customer.id}, :class => 'btn btn-warning btn-xs') %>
+          <%= link_to("View all customers", {:action => 'index'}, :class => 'btn btn-warning btn-xs') %>
+        <% end %>
+      </span>
+  
+  </div>
 
-
-<% else %>
-
-<%= @customer.name %> - <%= @page_title %>
-	<span id="titleEditLinkSpan">
-		<%= link_to("New", {:action => 'new', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
-	</span>		
-<% end %>
-</header>
-<%= !@viewForAllCustomers ? link_to("View all customer appointments", :action => 'index') : '' %>
-<table class="calendarTableClass">
-	<tr>
-	<% 7.times do |i| %>
-		<th><%= Date::DAYNAMES[i].slice(0..2)%></th>
-	<% end %>
-	</tr>
-	<tr>
-	<% 7.times do |i| %>
-		<td>
-		<% @appointments.sorted.each do |a| %>
-			<% if i == a.day %>
-				<div class="calendarItem">
-					<%= link_to(raw(a.start_time.strftime('%H:%M') + ' - ' + a.finish_time.strftime('%H:%M') + "<br>" + a.customer.name), :action => 'show', :customer_id => a.customer.id, :id => a.id) %>
-				</div>
-			<% end %>
-		<% end %>
-		</td>
-	<% end %>
-	</tr>
-</table>
-<span class="recordCount"><%= pluralize(@appointments.size, 'appointment') %> found</span>
+  <table class="table table-condensed">
+    <tr>
+    <% 7.times do |i| %>
+      <th class="center-head"><%= Date::DAYNAMES[i].slice(0..2)%></th>
+    <% end %>
+    </tr>
+    <tr>
+    <% 7.times do |i| %>
+      <td class="<%= [0, 6].include?(i) ? "calWeekend" : "calWeekday" %>">
+        <% @appointments.sorted.each do |a| %>
+          <% if i == a.day %>
+              <% linktext = a.start_time.strftime('%H:%M') + '-' + a.finish_time.strftime('%H:%M') %>
+            <% if @viewForAllCustomers 
+                linktext += '<br>' + a.customer.initials
+              end %>
+            <div class="calendarItem">
+              <%= link_to(raw(linktext), :action => 'show', :customer_id => a.customer.id, :id => a.id) %>
+            </div>
+          <% end %>
+        <% end %>
+      </td>
+    <% end %>
+    </tr>
+  </table>
+  <div class="well-sm bg-info recordCount"><%= pluralize(@appointments.size, 'appointment') %> found</div>
+</div>

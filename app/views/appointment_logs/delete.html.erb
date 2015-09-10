@@ -1,13 +1,15 @@
-<% @page_title = "Appointment Log Delete" %>
-<header>
-	<%= @customer.name %> - <%= @page_title %>
-	<span id="titleEditLinkSpan">	
-		<%= link_to("Confirm Delete", {:action => 'destroy', :customer_id => @appointment_log.customer_id, :id => @appointment_log.id}, :class => 'actionLinkClass') %>
-	</span>
-</header>
+<% @page_title = "Delete Class Log" %>
 
-<div>
-	<p id="predeletewarning">Are you sure that you wish to delete <b><em><%= @customer.name %>'s'</em></b> 
-		appointment log from <%= @appointment_log.date.strftime('%d %B, \'%y') %>?</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+      <%= @page_title %><%= !@viewForAllCustomers ? raw(' - ' + link_to(@customer.name, :controller => 'customers', :action => 'show', :id => @customer.id)) : '' %>
+      <span class="btn-group pull-right">
+        <%= link_to("Confirm Delete", {:action => 'destroy', :customer_id => @appointment_log.customer_id, :id => @appointment_log.id}, :class => 'btn btn-danger btn-xs') %>
+      </span>
+    </div>
+    <div class="panel-body">
+      <p id="predeletewarning">Are you sure that you wish to delete <b><em><%= @customer.name %>'s'</em></b> 
+        appointment log from <%= @appointment_log.date.strftime('%d %B, \'%y') %>?</p>
+    </div>
 </div>
-

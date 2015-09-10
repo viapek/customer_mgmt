@@ -12,5 +12,5 @@ class Appointment < ActiveRecord::Base
   scope :sorted, lambda {
     order('appointments.day, appointments.start_time ASC')
     }
-    
+   
 end

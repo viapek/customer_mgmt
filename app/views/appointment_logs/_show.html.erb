@@ -1,16 +1,14 @@
-<table class="viewTableClass">
-	<tr>
-		<th>Date</th>
-		<td><%= @appointment_log.date.strftime('%d %B, \'%y') %></td>
-	</tr>
-	<tr>
-		<th>Chargeable</th>
-		<td><%= @appointment_log.chargeable ? "Yes" : "No" %></td>
-	</tr>
-	<tr>
-		<th colspan="2">Notes</th>
-	</tr>
-	<tr>
-		<td colspan="2"><%= @appointment_log.notes %></td>
-	</tr>
+<table class="table">
+  <tr>
+    <th>&nbsp;Date</th>
+    <td><%= @appointment_log.date.strftime('%D') %></td>
+    <th>&nbsp;Chargeable</th>
+    <td><%= @appointment_log.chargeable ? raw('&#10003;') : raw('&#10005;') %></td>
+  </tr>
+  <tr>
+    <th colspan="4">&nbsp;Notes</th>
+  </tr>
+  <tr>
+    <td colspan="4"><p style="margin-left: 3px;"><%= @appointment_log.notes %></p></td>
+  </tr>
 </table>

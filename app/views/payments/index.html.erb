@@ -1,43 +1,40 @@
 <% @page_title = "Payments" %>
 
-<header>
-<% if @viewForAllCustomers %>
 
-All Customers - <%= @page_title %>
-	<span id="titleEditLinkSpan">
-		<%= link_to("New", {:action => 'new', :customer_id => 'true'}, :class => 'actionLinkClass') %>
-	</span>
+<div class="panel panel-default">
+  <div class="panel-heading">
 
+      <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+      <%= @page_title %><%= !@viewForAllCustomers ? ' - ' + @customer.name : '' %>
+      <span class="btn-group pull-right">
+        <% if @viewForAllCustomers %>
+          <%= link_to("New", {:action => 'new', :customer_id => 'true'}, :class => 'btn btn-warning btn-xs') %>
+        <% else %>
+          <%= link_to("New", {:action => 'new', :customer_id => @customer.id}, :class => 'btn btn-warning btn-xs') %>
+          <%= link_to("View all customers", {:action => 'index'}, :class => 'btn btn-warning btn-xs') %>
+        <% end %>
+      </span>
 
-<% else %>
+  </div>
 
-<%= @customer.name %> - <%= @page_title %>
-	<span id="titleEditLinkSpan">
-		<%= link_to("New", {:action => 'new', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
-	</span>		
-<% end %>
-</header>
-
-
-<%= !@viewForAllCustomers ? link_to("View all customer payments", :action => 'index') : '' %>
-<table class="indexTableClass">
-	<tr class="indexTableHeaderRowClass">
-	<% if @viewForAllCustomers %>
-		<th>Customer</th>
-	<% end %>
-		<th>Date</th>
-		<th>Amount (&#8361;)</th>
-		<th>Classes Paid For</th>
-	</tr>
+<table class="table table-striped"> 
+  <tr>
+  <% if @viewForAllCustomers %>
+    <th>&nbsp;&nbsp;Customer</th>
+  <% end %>
+    <th>&nbsp;&nbsp;Date</th>
+    <th>Amount (&#8361;)</th>
+  </tr>
 <% @payments.sorted.each do |p| %>
-	<tr class="<%= cycle('odd', 'even') %>">
-	<% if @viewForAllCustomers %>
-		<td><%= p.customer.name %></td>
-	<% end %>
-		<td><%= p.date.strftime('%d %B, \'%y') %></td>
-		<td><%= link_to(p.amount, {:action => 'show', :customer_id => p.customer_id, :id => p.id}) %></td>
-		<td><%= p.classes_paid_for %></td>
-	</tr>
+  <tr>
+  <% if @viewForAllCustomers %>
+    <td>&nbsp;&nbsp;<%= link_to(p.customer.name, :controller => 'customers', :action => 'show', :id => p.customer.id) %></td>
+  <% end %>
+    <td>&nbsp;&nbsp;<%= p.date.strftime('%d %b, \'%y') %></td>
+    <td><%= link_to(p.amount, {:action => 'show', :customer_id => p.customer_id, :id => p.id}) %></td>
+  </tr>
 <% end %>
 </table>
-<span class="recordCount"><%= pluralize(@payments.size, 'payment') %> found</span>
+
+<div class="panel-footer text-success"><%= pluralize(@payments.size, 'payment') %> found</span>
+</div>

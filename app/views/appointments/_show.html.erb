@@ -1,14 +1,14 @@
-<table class="viewTableClass">
-	<tr>
-		<th>Day</th>
-		<td><%= Date::DAYNAMES[@appointment.day] %></td>
-	</tr>
-	<tr>
-		<th>Time</th>
-		<td><%= @appointment.start_time.strftime('%H:%M') %> - <%= @appointment.finish_time.strftime('%H:%M') %></td>
-	</tr>
-	<tr>
-		<th>Location</th>
-		<td><%= @appointment.location %></td>
-	</tr>
+<table class="table">
+  <tr>
+    <th>Day</th>
+    <td><%= Date::DAYNAMES[@appointment.day] %></td>
+  </tr>
+  <tr>
+    <th>Time</th>
+    <td><%= @appointment.start_time.strftime('%H:%M') %> - <%= @appointment.finish_time.strftime('%H:%M') %></td>
+  </tr>
+  <tr>
+    <th>Location</th>
+    <td><%= @appointment.location %></td>
+  </tr>
 </table>

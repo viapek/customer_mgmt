@@ -1,25 +1,31 @@
 <%= error_messages_for(@payment) %>
-<table summary="Payment form fields" class="formTableClass">
 <% if @viewForAllCustomers %>
-	<tr>
-		<th>Customer</th>
-		<td><%= f.select(:customer_id, Customer.all.map {|c| [c.name, c.id]})%></td>
-	</tr>
+  <div class="row form-group">
+    <label for="customer_id" class="col-xs-4 control-label">Customer</label>
+    <div class="col-xs-8">
+      <%= f.select(:customer_id, Customer.all.map {|c| [c.name, c.id]}, :class => "form-control")%></td>
+    </div>
+  </div>
 <% else %>
-	<%= f.hidden_field(:customer_id, :value => @customer.id) %>
+  <%= f.hidden_field(:customer_id, :value => @customer.id) %>
 <% end %>
-	<tr>
-		<th>Date</th>
-		<td>
-			<%= f.date_select(:date) %>	
-		</td>
-	</tr>
-	<tr>
-		<th>Amount (&#8361;)</th>
-		<td><%= f.text_field(:amount) %></td>
-	</tr>
-	<tr>
-		<th>Classes Paid For</th>
-		<td><%= f.select(:classes_paid_for, 1..30, :default => 4) %></td>
-	</tr>
-</table>
+  <div class="row form-group">
+    <label for="date" class="col-xs-4 control-label">Date</label>
+    <div class="col-xs-8">
+      <%= f.date_select(:date, {:order => [:day, :month, :year], :use_short_month => true} ) %>  
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <label for="amount" class="col-xs-4 control-label">Amount (&#8361;)</label>
+    <div class="col-xs-8">
+      <%= f.text_field(:amount, :placeholder => "Enter payment amount") %></td>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <label for="notes" class="col-xs-4 control-label">Classes Paid For</label>
+    <div class="col-xs-8">
+      <%= f.select(:classes_paid_for, 1..30, :default => 4) %>
+    </div>
+  </div>

@@ -1,54 +1,54 @@
-<table class="viewTableClass">
-	<tr class="<%= cycle('odd', 'even')%>">
-		<th>Email</th>
-		<td><%= @customer.email %></td>
-	</tr>
-	<tr class="<%= cycle('odd', 'even')%>">
-		<th>Phone</th>
-		<td><%= formatphonenumber(@customer.phone) %></td>
-	</tr>
-	<tr class="<%= cycle('odd', 'even')%>">
-		<th>Current</th>
-		<td><%= @customer.current ? 'Yes' : 'Archived' %></td>
-	</tr>
-	<tr class="<%= cycle('odd', 'even')%>">
-		<th>Classes per week</th>
-		<td>
-		<% if !@customer.appointments.blank? %>
-		<%= link_to(@customer.appointments.size, {:controller => 'appointments', :action => 'index', :customer_id => @customer.id}, :class => 'infoLinkClass') %>
-		<% else %>
-		<%= link_to("New", {:controller => 'appointments', :action => 'new', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
-		<% end %>
-		</td>
-	</tr>
-	<tr class="<%= cycle('odd', 'even')%>">
-		<th>Classes Taken</th>
-		<td>
-		<% if !@customer.appointment_logs.blank? %>
-		<%= link_to(@customer.appointment_logs.where(:chargeable => true).size, {:controller => 'appointment_logs', :action => 'index', :customer_id => @customer.id}, :class => 'infoLinkClass') %>
-		<% else %>
-		<%= link_to("New", {:controller => 'appointment_logs', :action => 'new', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
-		<% end %>
-		</td>
-	</tr>
-	<tr class="<%= cycle('odd', 'even')%>">
-		<th>Classes Paid For</th>
-		<td>
-		<% if !@customer.payments.blank? %>
-		<%= link_to(@customer.payments.sum(:classes_paid_for), {:controller => 'payments', :action => 'index', :customer_id => @customer.id}, :class => 'infoLinkClass') %>
-		<% else %>
-		<%= link_to("New", {:controller => 'payments', :action => 'new', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
-		<% end %>
-		</td>
-	</tr>
-	<tr class="<%= cycle('odd', 'even')%>">
-		<th>Last payment</th>
-		<td>
-		<% if !@customer.payments.blank? %>
-		<%= link_to(@customer.payments.last.date.strftime('%d %b, \'%y'), {:controller => 'payments', :action => 'show', :customer_id => @customer.id, :id => @customer.payments.first.id}, :class => 'infoLinkClass') %>
-		<% else %>
-		<%= link_to("New", {:controller => 'payments', :action => 'new', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
-		<% end %>
-		</td>
-	</tr>
+<table class="table">
+  <tr>
+    <th>&nbsp;Email</th>
+    <td><%= @customer.email %></td>
+  </tr>
+  <tr>
+    <th>&nbsp;Phone</th>
+    <td><%= formatphonenumber(@customer.phone) %></td>
+  </tr>
+  <tr class="<%= cycle('odd', 'even')%>">
+    <th>&nbsp;Current</th>
+    <td><%= @customer.current ? 'Yes' : 'Archived' %></td>
+  </tr>
+  <tr>
+    <th>&nbsp;Classes per week</th>
+    <td>
+    <% if !@customer.appointments.blank? %>
+    <%= link_to(@customer.appointments.size, {:controller => 'appointments', :action => 'index', :customer_id => @customer.id}, :class => 'infoLinkClass') %>
+    <% else %>
+    <%= link_to("New", {:controller => 'appointments', :action => 'new', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
+    <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>&nbsp;Classes Taken</th>
+    <td>
+    <% if !@customer.appointment_logs.blank? %>
+    <%= link_to(@customer.appointment_logs.where(:chargeable => true).size, {:controller => 'appointment_logs', :action => 'index', :customer_id => @customer.id}, :class => 'infoLinkClass') %>
+    <% else %>
+    <%= link_to("New", {:controller => 'appointment_logs', :action => 'new', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
+    <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>&nbsp;Classes Paid For</th>
+    <td>
+    <% if !@customer.payments.blank? %>
+    <%= link_to(@customer.payments.sum(:classes_paid_for), {:controller => 'payments', :action => 'index', :customer_id => @customer.id}, :class => 'infoLinkClass') %>
+    <% else %>
+    <%= link_to("New", {:controller => 'payments', :action => 'new', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
+    <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>&nbsp;Last payment</th>
+    <td>
+    <% if !@customer.payments.blank? %>
+    <%= link_to(@customer.payments.last.date.strftime('%d %b, \'%y'), {:controller => 'payments', :action => 'show', :customer_id => @customer.id, :id => @customer.payments.first.id}, :class => 'infoLinkClass') %>
+    <% else %>
+    <%= link_to("New", {:controller => 'payments', :action => 'new', :customer_id => @customer.id}, :class => 'actionLinkClass') %>
+    <% end %>
+    </td>
+  </tr>
 </table>

@@ -1,9 +1,16 @@
-<% @page_title = "Customer Edit" %>
-<header><%= @customer.name %> - <%= @page_title %></header>
-<%= form_for(:customer, :url => {:action => 'update', :id => @customer.id}) do |f| %>
+<% @page_title = "Edit Customer" %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      <%= @page_title %> - <%= link_to(@customer.name, :action => 'show', :id => @customer.id) %>
+  </div>
+    <%= form_for(:customer, :url => {:action => 'update', :id => @customer.id}) do |f| %>
 
-<%= render(:partial => 'form', :locals => {:f => f})%>
+    <%= render(:partial => 'form', :locals => {:f => f})%>
 
-<div class="formButtonDivClass"><%= submit_tag("Update customer", :class => 'formButtonClass')%></div>
 
-<% end %>
+    <%= submit_tag("Update customer", :class => 'form-control btn btn-md btn-primary')%>
+
+
+    <% end %>
+</div>

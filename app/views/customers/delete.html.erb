@@ -1,11 +1,17 @@
-<% @page_title = "Customer Delete" %>
-<header><%= @customer.name %> - <%= @page_title %></header>
-<div>
-	<p id="predeletewarning">Are you sure that you wish to delete <b><em><%= @customer.name %></em></b> and all
-	associated history?</p>
-</div>
+<% @page_title = "Delete Customer" %>
 
-<div class="formButtonDivClass">	
-	<%= link_to("Confirm Delete", {:action => 'destroy', :id => @customer.id}, :class => 'actionLinkClass') %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    <%= @page_title %> - <%= link_to(@customer.name, :action => 'show', :id => @customer.id) %>  
+    <span class="pull-right">  
+      <%= link_to("Confirm Delete", {:action => 'destroy', :id => @customer.id}, :class => 'btn btn-danger btn-xs') %>
+    </span>
+  </div>
+  <div class="panel-body">
+    <p id="predeletewarning">Are you sure that you wish to delete <b><em><%= @customer.name %></em></b> and all
+    associated history?</p>
+  </div>
+  
 </div>
 

@@ -1,9 +1,16 @@
-<% @page_title = "Customer Edit" %>
-<header><%= @customer.name %> - <%= @page_title %></header>
-<%= form_for(:customer, :url => {:action => 'create', :id => @customer.id}) do |f| %>
+<% @page_title = "New Customer" %>
+<div class="panel panel-default">
+  <div class="panel-heading">
 
-<%= render(:partial => 'form', :locals => {:f => f})%>
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      <%= @page_title %>
 
-<div class="formButtonDivClass"><%= submit_tag("Create customer", :class => 'formButtonClass')%></div>
+  </div>
+  <%= form_for(:customer, :url => {:action => 'create', :id => @customer.id}) do |f| %>
 
-<% end %>
+    <%= render(:partial => 'form', :locals => {:f => f})%>
+
+    <%= submit_tag("Create customer", :class => 'form-control btn btn-primary btn-md')%>
+
+  <% end %>
+</div>

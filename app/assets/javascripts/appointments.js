@@ -11,3 +11,5 @@ function updateFinishTime() {
 	fM = document.getElementById('appointment_finish_time_5i');
 	fM.selectedIndex = sM.selectedIndex;
 }
+
+

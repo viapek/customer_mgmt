@@ -2,3 +2,23 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+.calendarItem {
+	text-align: center;
+	padding: 3px 0 1px 0;
+	font-size: 10px;
+	height: 35px;
+	border: 1px solid #DD9900;
+	border-radius: 5px;
+	background-color: #EEEEEE;
+	color: #EEEEEE;
+}
+.calWeekend {
+	background-color: #FFE1E1;
+}
+.calWeekday {
+	background-color: #DDDDDD;
+}
+.center-head {
+	text-align: center;
+	min-width: 65px;
+}

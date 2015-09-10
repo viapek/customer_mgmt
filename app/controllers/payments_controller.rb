@@ -1,5 +1,7 @@
 class PaymentsController < ApplicationController
+  layout 'admin'
 
+  before_action :confirm_logged_in
   before_action :getCustomer
 
   def index
