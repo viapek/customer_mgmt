@@ -9,7 +9,7 @@
       <%= javascript_include_tag('application') %>
   </head>
   <body id="<%= controller_name %>">
-    <section class="container">
+    <section class="container-fluid">
     <%= render(:partial => 'application/header') %>
     <% if !flash.blank? %>
       <div class="bg-success">

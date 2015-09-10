@@ -6,6 +6,7 @@
       <%= @page_title %>
 
   </div>
+  <div class="panel-body">
   <%= form_for(:customer, :url => {:action => 'create', :id => @customer.id}) do |f| %>
 
     <%= render(:partial => 'form', :locals => {:f => f})%>
@@ -13,4 +14,5 @@
     <%= submit_tag("Create customer", :class => 'form-control btn btn-primary btn-md')%>
 
   <% end %>
+  </div>
 </div>

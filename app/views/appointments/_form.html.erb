@@ -1,38 +1,38 @@
 <%= error_messages_for(@appointment) %>
 <% if @viewForAllCustomers %>
-	<div class="row form-group">
-		<label for="customer_id" class="col-xs-3 control-label">Customer</label>
-		<div class="col-xs-9">
-  <%= f.select(:customer_id, Customer.all.map {|c| [c.name, c.id]}, :class => "form-control")%></td>
-		</div>
-	</div>
+  <div class="row form-group">
+    <label for="customer_id" class="col-xs-3 control-label">Customer</label>
+    <div class="col-xs-9">
+      <%= f.select(:customer_id, Customer.all.map {|c| [c.name, c.id]})%></td>
+    </div>
+  </div>
 <% else %>
-	<%= f.hidden_field(:customer_id, :value => @customer.id) %>
+    <%= f.hidden_field(:customer_id, :value => @customer.id) %>
 <% end %>
-	<div class="row form-group">
-		<label for="day" class="col-xs-3 control-label">Day</label>
-		<div class="col-xs-9">
-  <%= f.select(:day, Date::DAYNAMES.each_with_index.to_a, :class => "form-control") %>	
-		</div>
-	</div>
+  <div class="row form-group">
+    <label for="day" class="col-xs-3 control-label">Day</label>
+    <div class="col-xs-9">
+      <%= f.select(:day, Date::DAYNAMES.each_with_index.to_a) %>	
+    </div>
+  </div>
 
-	<div class="row form-group">
-		<label for="start_time" class="col-xs-3 control-label">Start</label>
-		<div class="col-xs-9">
-  <%= f.time_select(:start_time, {:ignore_date => true, :minute_step => 15 }, :onchange => 'updateFinishTime()') %>
-		</div>
-	</div>
+  <div class="row form-group">
+    <label for="start_time" class="col-xs-3 control-label">Start</label>
+    <div class="col-xs-9">
+     <%= f.time_select(:start_time, {:ignore_date => true, :minute_step => 15 }, :onchange => 'updateFinishTime()') %>
+    </div>
+  </div>
 
-	<div class="row form-group">
-		<label for="finish_time" class="col-xs-3">Finish</label>
-		<div class="col-xs-9">  
-  <%= f.time_select(:finish_time, {:ignore_date => true, :minute_step => 15 }) %>
-		</div>
-	</div>
+  <div class="row form-group">
+    <label for="finish_time" class="col-xs-3">Finish</label>
+    <div class="col-xs-9">  
+      <%= f.time_select(:finish_time, {:ignore_date => true, :minute_step => 15 }) %>
+    </div>
+  </div>
 
-	<div class="row form-group">
-		<label for="location" class="col-xs-3">Location</label>
-		<div class="col-xs-9">
-  <%= f.text_field(:location, :placeholder => "Where the class is held") %>
-		</div>
-	</div>
+  <div class="row form-group">
+    <label for="location" class="col-xs-3">Location</label>
+    <div class="col-xs-9">
+      <%= f.text_field(:location, :placeholder => "Where the class is held?", :class => 'col-xs-8') %>
+    </div>
+  </div>

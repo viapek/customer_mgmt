@@ -3,7 +3,7 @@
 <div class="row form-group">
   <label for="customer_id" class="col-xs-3 control-label">Customer</label>
   <div class="col-xs-9">
-  	<%= f.select(:customer_id, Customer.all.map {|c| [c.name, c.id]}, :class => "form-control")%></td>
+  	<%= f.select(:customer_id, Customer.all.map {|c| [c.name, c.id]})%></td>
   </div>
 </div>
 <% else %>
@@ -26,6 +26,6 @@
 <div class="row form-group">
   <label for="notes" class="col-xs-3 control-label">Notes</label>
   <div class="col-xs-9">
-  	<%= f.text_area(:notes, :rows => 5, :style => 'overflow-y: scroll; resize: none;', :class=> "form-control") %>
+  	<%= f.text_area(:notes, :rows => 5, :style => 'overflow-y: scroll; resize: none;', :class => 'col-xs-9') %>
   </div>
 </div>

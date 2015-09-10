@@ -6,7 +6,7 @@
       <%= @page_title %><%= !@viewForAllCustomers ? raw(' - ' + link_to(@customer.name, :controller => 'customers', :action => 'show', :id => @customer.id)) : '' %>
   </div>
   <div class="panel-body">
-<%= form_for(:appointment_log, :url => {:action => 'create'}, :html => {:class => "form-horizontal"}) do |f| %>
+<%= form_for(:appointment_log, :url => {:action => 'create'}) do |f| %>
 
 <%= render(:partial => 'form', :locals => {:f => f})%>
 
